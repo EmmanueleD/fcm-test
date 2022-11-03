@@ -3,12 +3,31 @@
   <HelloWorld msg="Welcome to Your Vue.js App" />
 </template>
 
-<script setup>
+<script>
+// import OneSignalVue from 'onesignal-vue';
+
+export default {
+  name: "HelloWorld",
+  props: {
+    msg: String
+  },
+  beforeCreate() {
+    this.$OneSignal.showSlidedownPrompt();
+  },
+}
+</script>
+
+<!-- <script setup>
 // import { onBackgroundMessage } from "firebase/messaging/sw";
 // import { onMessage } from "firebase/messaging";
 import { getToken } from 'firebase/messaging'
 import messaging from './firebase'
 import HelloWorld from './components/HelloWorld.vue'
+import OneSignalVue from '../node_modules/onesignal-vue';
+
+const oneSignal = OneSignalVue()
+
+oneSignal.showSlidedownPrompt()
 
 const vapidKey = 'BLOjYR6_W7SCWT3iloqWTuZjHdesGtTTdr4zVWU0JjeyebtKGl1exIL7f3nIqy6pZDTLTD-o0bTEdAYYGA-Qm_0'
 
@@ -39,7 +58,7 @@ function requestPermission() {
 
 
 requestPermission()
-</script>
+</script> -->
 
 <style>
 #app {
